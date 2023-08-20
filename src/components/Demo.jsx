@@ -8,6 +8,7 @@ const Demo = () => {
     url:'',
     summary:'',
   });
+const [allArticle,setAllArticle]=useState([]);
 const [getSummary,{error,isFetching}]=useLazyGetSummaryQuery();
 
 const handleSubmit=async(e)=>{
