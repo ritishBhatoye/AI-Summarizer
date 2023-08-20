@@ -8,10 +8,10 @@ const Demo = () => {
     url:'',
     summary:'',
   });
-const [allArticle,setAllArticles]=useState([]);
+const [allArticles,setAllArticles]=useState([]);
 const [getSummary,{error,isFetching}]=useLazyGetSummaryQuery();
 
-useEffect=(()=>{
+useEffect(()=>{
 const articlesFromLocalStorage=JSON.parse(
   localStorage.getItem('articles')
 )
@@ -25,7 +25,7 @@ const handleSubmit=async(e)=>{
   const {data} =await getSummary({articleUrl:article.url});
   if(data?.summary){
     const newArticle={...article,summary:data.summary}
-    const updatedAllArticles=[newArticle,...allArticle];
+    const updatedAllArticles=[newArticle,...allArticles];
      
     setArticle(newArticle);
     setAllArticles(updatedAllArticles);
@@ -72,7 +72,7 @@ peer-focus:text-gray-700'
    {/* Browser URL History */}
       <div className='flex flex-col gap-1 max-h-60
       overflow-y-auto'>
-      {allArticle.map((item,index)=>(
+      {allArticles.map((item,index)=>(
         <div
         key={`link-${index}`}
         onClick={()=>setArticle(item)}
@@ -84,6 +84,10 @@ peer-focus:text-gray-700'
         alt="copy_icon"
         className='w-[40%] h-[40%] object-contain'
         />
+        <p
+        className='flex-1 font-satoshi
+        '
+        ></p>
           </div>           
           </div>
       ))}
