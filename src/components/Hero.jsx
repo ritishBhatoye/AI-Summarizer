@@ -12,7 +12,7 @@ className='w-28 object-contain'
 <button
 type="button"
 onClick={()=>window.open(
-    'github.com/ritishBhatoye')}
+    'https://github.com/ritishBhatoye/AI-Summarizer.git')}
     className='black_btn'
 >
     GitHub
